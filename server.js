@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 var torrentStream = require('torrent-stream');
 var express = require('express');
 var request = require('request').defaults({encoding: null});
@@ -7,9 +5,14 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var os = require('os');
-var del = require('del');
 var mime = require('mime');
 var archiver = require('archiver');
+/// import del in in import() dynamic import require common js module
+(async () => {
+  const del = await import('del');
+  // use the del library here
+})();
+
 
 var client, url;
 
